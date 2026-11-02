@@ -4,7 +4,7 @@
   "wa": "972534161615",
   "mail": "shtn161615@gmail.com",
   "license": "",
-  "demo": true
+  "demo": false
  },
  "areas": [
   {
@@ -38,90 +38,5 @@
    "text": "חשמונאים היא יישוב הסמוך למודיעין עילית. אנחנו מלווים רכישה, מכירה והשכרה גם באזור."
   }
  ],
- "props": [
-  {
-   "id": "p1",
-   "title": "דירת 4 חדרים מרווחת",
-   "area": "kiryat-sefer",
-   "deal": "מכירה",
-   "type": "דירה",
-   "rooms": 4,
-   "size": 105,
-   "floor": "קומה 3",
-   "price": 1850000,
-   "desc": "דירה מרווחת ומוארת, דוגמה להמחשה.",
-   "img": "",
-   "hidden": false
-  },
-  {
-   "id": "p2",
-   "title": "דירת גן 5 חדרים",
-   "area": "brachfeld",
-   "deal": "מכירה",
-   "type": "דירת גן",
-   "rooms": 5,
-   "size": 140,
-   "floor": "קומת קרקע",
-   "price": 2350000,
-   "desc": "דירת גן עם חצר, דוגמה להמחשה.",
-   "img": "",
-   "hidden": false
-  },
-  {
-   "id": "p3",
-   "title": "דירת 3 חדרים להשכרה",
-   "area": "kiryat-sefer",
-   "deal": "השכרה",
-   "type": "דירה",
-   "rooms": 3,
-   "size": 75,
-   "floor": "קומה 2",
-   "price": 3900,
-   "desc": "דירה להשכרה, דוגמה להמחשה.",
-   "img": "",
-   "hidden": false
-  },
-  {
-   "id": "p4",
-   "title": "פנטהאוז 6 חדרים",
-   "area": "matityahu-mizrach",
-   "deal": "מכירה",
-   "type": "פנטהאוז",
-   "rooms": 6,
-   "size": 165,
-   "floor": "קומה אחרונה",
-   "price": 3100000,
-   "desc": "פנטהאוז עם מרפסת גדולה, דוגמה להמחשה.",
-   "img": "",
-   "hidden": false
-  },
-  {
-   "id": "p5",
-   "title": "דירת 4 חדרים להשכרה",
-   "area": "brachfeld",
-   "deal": "השכרה",
-   "type": "דירה",
-   "rooms": 4,
-   "size": 95,
-   "floor": "קומה 1",
-   "price": 4800,
-   "desc": "דירה להשכרה, דוגמה להמחשה.",
-   "img": "",
-   "hidden": false
-  },
-  {
-   "id": "p6",
-   "title": "דירת 3.5 חדרים להשקעה",
-   "area": "matityahu-mizrach",
-   "deal": "מכירה",
-   "type": "דירה",
-   "rooms": 3.5,
-   "size": 85,
-   "floor": "קומה 4",
-   "price": 1550000,
-   "desc": "נכס להשקעה, דוגמה להמחשה.",
-   "img": "",
-   "hidden": false
-  }
- ]
+ "props": []
 }
