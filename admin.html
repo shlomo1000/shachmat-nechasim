@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="google-site-verification" content="F9HWkE3Spy9wWcku-SPEJiPwwZx3Kas40tjG19o8gx0" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ניהול האתר | שחמט נכסים</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body{background:var(--mist)}
+.top{background:var(--navy);color:#fff;padding:12px 0;border-bottom:4px solid var(--red)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.top img{height:40px;vertical-align:middle;border-radius:4px;margin-inline-end:8px}
+.tabs{display:flex;gap:6px;margin:18px 0;flex-wrap:wrap}
+.tabs button{padding:10px 20px;border:2px solid var(--navy);background:#fff;color:var(--navy);font:700 16px Heebo;border-radius:4px;cursor:pointer}
+.tabs button.on{background:var(--navy);color:#fff}
+.box{background:#fff;color:#14172b;border:1px solid var(--line);border-top:5px solid var(--red);border-radius:6px;padding:20px;margin-bottom:20px}
+.box h2{color:var(--navy);font-size:21px;margin-bottom:8px}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 16px}
+.btn.sm{padding:6px 14px;font-size:14px}
+.btn.gray{background:#6b7390}
+table{width:100%;border-collapse:collapse;font-size:15px;color:#14172b}
+th,td{text-align:right;padding:8px;border-bottom:1px solid var(--line);vertical-align:middle}
+td img{height:40px;width:56px;object-fit:cover;border-radius:3px}
+.tag{background:#e6e9f5;border-radius:3px;padding:1px 8px;font-size:13px}
+.tag.h{background:#ffe1e5;color:#a1001a}
+#bar{position:sticky;bottom:0;background:#fff;border-top:4px solid var(--red);padding:12px 0;z-index:10}
+#bar .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+#msg{font-weight:500}
+.ok{color:#0a7a33}.er{color:#b00020}
+.hint{font-size:14px;color:#5b6285}
+img.pv{max-height:120px;border-radius:4px;margin-top:8px;display:block}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><div><img src="logo.jpg" alt=""><b>ניהול האתר – שחמט נכסים</b></div><a href="index.html" target="_blank" style="text-decoration:underline">לצפייה באתר</a></div></div>
+<div class="wrap">
+
+<div class="box" id="conn">
+<h2>חיבור לאתר</h2>
+<p class="hint">פעם אחת בלבד. הפרטים נשמרים רק בדפדפן שלך, והחיבור מאפשר לשמור שינויים ישירות לאתר.</p>
+<div class="fg">
+<div><label for="cO">שם משתמש בגיטהאב</label><input id="cO" value="shlomo1000" dir="ltr"></div>
+<div><label for="cR">שם הריפו</label><input id="cR" value="shachmat-nechasim" dir="ltr"></div>
+<div><label for="cB">ענף</label><input id="cB" value="main" dir="ltr"></div>
+<div><label for="cT">קוד גישה (Token)</label><input id="cT" type="password" dir="ltr" autocomplete="off"></div>
+</div>
+<p style="margin-top:14px"><button class="btn" id="bConn" type="button">התחברות</button></p>
+<details style="margin-top:12px"><summary>איך יוצרים קוד גישה?</summary>
+<ol class="hint" style="padding-inline-start:20px;margin-top:6px;line-height:1.9">
+<li>בגיטהאב: Settings ← Developer settings ← Personal access tokens ← Fine-grained tokens ← Generate new token.</li>
+<li>Repository access: Only select repositories, ובחר את ריפו האתר.</li>
+<li>Permissions ← Repository permissions ← Contents: Read and write.</li>
+<li>העתק את הקוד והדבק כאן. אל תשתף אותו עם אף אחד.</li>
+</ol></details>
+</div>
+
+<div id="app" class="hide">
+<div class="tabs" role="tablist">
+<button class="on" data-t="props">נכסים</button><button data-t="areas">שכונות</button><button data-t="set">הגדרות האתר</button>
+</div>
+
+<div id="t-props">
+<div class="box"><h2 id="pfT">הוספת נכס</h2>
+<div class="fg">
+<div><label for="pTitle">כותרת</label><input id="pTitle"></div>
+<div><label for="pArea">שכונה</label><select id="pArea"></select></div>
+<div><label for="pDeal">עסקה</label><select id="pDeal"><option>מכירה</option><option>השכרה</option></select></div>
+<div><label for="pType">סוג נכס</label><select id="pType"><option>דירה</option><option>דירת גן</option><option>פנטהאוז</option><option>דירת גג</option><option>דופלקס</option><option>בית פרטי</option><option>קוטג׳</option><option>מגרש</option><option>מסחרי</option></select></div>
+<div><label for="pRooms">חדרים</label><input id="pRooms" type="number" step="0.5" min="1"></div>
+<div><label for="pSize">שטח (מ״ר)</label><input id="pSize" type="number"></div>
+<div><label for="pFloor">קומה</label><input id="pFloor" placeholder="קומה 3"></div>
+<div><label for="pPrice">מחיר (₪, השכרה: לחודש)</label><input id="pPrice" type="number"></div>
+</div>
+<label for="pDesc">תיאור</label><textarea id="pDesc" rows="3"></textarea>
+<label for="pImg">תמונה</label><input id="pImg" type="file" accept="image/*"><img id="pPv" class="pv hide" alt="">
+<label style="margin-top:10px"><input id="pHid" type="checkbox" style="width:auto"> מוסתר מהאתר (נמכר או הושכר)</label>
+<p style="margin-top:14px"><button class="btn" id="pSave" type="button">הוספה</button> <button class="btn gray hide" id="pCancel" type="button">ביטול עריכה</button></p>
+</div>
+<div class="box"><h2>הנכסים באתר</h2><div style="overflow-x:auto"><table id="pTbl"></table></div></div>
+</div>
+
+<div id="t-areas" class="hide">
+<div class="box"><h2 id="aFT">הוספת שכונה</h2>
+<div class="fg">
+<div><label for="aName">שם השכונה</label><input id="aName"></div>
+<div><label for="aSlug">כתובת באנגלית (אותיות קטנות ומקפים)</label><input id="aSlug" dir="ltr" placeholder="neot-brachfeld"></div>
+<div><label for="aLoc">מיקום</label><select id="aLoc"><option>מודיעין עילית</option><option>אזור מודיעין עילית</option></select></div>
+</div>
+<label for="aText">טקסט פתיחה לעמוד השכונה (חשוב לגוגל)</label><textarea id="aText" rows="3"></textarea>
+<p class="hint">לכל שכונה נוצר אוטומטית עמוד משלה, והוא נכנס למפת האתר.</p>
+<p style="margin-top:14px"><button class="btn" id="aSave" type="button">הוספה</button> <button class="btn gray hide" id="aCancel" type="button">ביטול עריכה</button></p>
+</div>
+<div class="box"><h2>השכונות באתר</h2><div style="overflow-x:auto"><table id="aTbl"></table></div></div>
+</div>
+
+<div id="t-set" class="hide">
+<div class="box"><h2>פרטי העסק</h2>
+<div class="fg">
+<div><label for="sPhone">טלפון להצגה</label><input id="sPhone" dir="ltr"></div>
+<div><label for="sWa">מספר וואטסאפ בפורמט בינלאומי</label><input id="sWa" dir="ltr" placeholder="972534161615"></div>
+<div><label for="sMail">אימייל</label><input id="sMail" dir="ltr"></div>
+<div><label for="sLic">מספר רישיון תיווך</label><input id="sLic" dir="ltr"></div>
+</div>
+<label style="margin-top:10px"><input id="sDemo" type="checkbox" style="width:auto"> הצג באתר הערה שהנכסים הם דוגמאות</label>
+</div>
+</div>
+
+<div style="height:20px"></div>
+</div>
+</div>
+
+<div id="bar" class="hide"><div class="wrap">
+<button class="btn" id="bPub" type="button">שמירה ופרסום באתר</button>
+<span id="msg" aria-live="polite">אין שינויים שלא נשמרו.</span>
+</div></div>
+
+<script>
+var cfg=JSON.parse(localStorage.getItem("shachmat_admin")||"null"),D=null,dirty=false,editP=null,editA=null,pend={},pv={},delImg=[],tpl="";
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function msg(t,c){$("msg").textContent=t;$("msg").className=c||""}
+function mark(){dirty=true;msg("יש שינויים שלא פורסמו. לחץ ״שמירה ופרסום״.")}
+window.onbeforeunload=function(){return dirty?"יש שינויים שלא נשמרו":undefined};
+function b64e(s){return btoa(unescape(encodeURIComponent(s)))}
+function b64d(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,""))))}
+function api(path,method,body){
+return fetch("https://api.github.com/repos/"+cfg.o+"/"+cfg.r+"/contents/"+path+(method&&method!=="GET"?"":"?ref="+cfg.b+"&v="+Date.now()),{method:method||"GET",headers:{Authorization:"Bearer "+cfg.t,Accept:"application/vnd.github+json"},body:body?JSON.stringify(body):undefined})}
+async function getFile(path){var r=await api(path);if(r.status===404)return null;if(!r.ok)throw new Error("שגיאת גישה ("+r.status+"). בדוק את הקוד וההרשאות.");return r.json()}
+async function putFile(path,content,isB64,note){
+var ex=await getFile(path);
+if(ex&&!isB64&&ex.content&&b64d(ex.content)===content)return false;
+var r=await api(path,"PUT",{message:note||"עדכון מלוח הניהול",content:isB64?content:b64e(content),branch:cfg.b,sha:ex?ex.sha:undefined});
+if(!r.ok)throw new Error("שמירת "+path+" נכשלה ("+r.status+")");return true}
+async function delFile(path){var ex=await getFile(path);if(!ex)return;var r=await api(path,"DELETE",{message:"מחיקה מלוח הניהול",sha:ex.sha,branch:cfg.b});if(!r.ok)throw new Error("מחיקת "+path+" נכשלה")}
+
+$("bConn").onclick=async function(){
+cfg={o:$("cO").value.trim(),r:$("cR").value.trim(),b:$("cB").value.trim()||"main",t:$("cT").value.trim()};
+await start(true)};
+async function start(save){
+try{
+msg("מתחבר...");
+var f=await getFile("data.json");if(!f)throw new Error("לא נמצא data.json בריפו");
+D=JSON.parse(b64d(f.content));
+var t=await fetch("area-template.html?v="+Date.now());tpl=await t.text();
+if(save)localStorage.setItem("shachmat_admin",JSON.stringify(cfg));
+$("conn").classList.add("hide");$("app").classList.remove("hide");$("bar").classList.remove("hide");
+msg("מחובר. אין שינויים שלא נשמרו.","ok");draw()
+}catch(e){$("conn").classList.remove("hide");msg(e.message,"er");$("bar").classList.remove("hide");alert(e.message)}}
+if(cfg){$("cO").value=cfg.o;$("cR").value=cfg.r;$("cB").value=cfg.b;$("cT").value=cfg.t;start(false)}
+
+document.querySelectorAll(".tabs button").forEach(function(b){b.onclick=function(){
+document.querySelectorAll(".tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+["props","areas","set"].forEach(function(t){$("t-"+t).classList.toggle("hide",t!==b.dataset.t)})}});
+
+function slugOk(s){return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(s)}
+function draw(){
+$("pArea").innerHTML=D.areas.map(function(a){return '<option value="'+esc(a.slug)+'">'+esc(a.name)+'</option>'}).join("");
+var an=function(s){var a=D.areas.filter(function(x){return x.slug===s})[0];return a?a.name:"?"};
+$("pTbl").innerHTML='<tr><th></th><th>נכס</th><th>שכונה</th><th>מחיר</th><th></th></tr>'+D.props.map(function(p,i){
+var src=pv[p.img]||(p.img?p.img:"");
+return '<tr><td>'+(src?'<img src="'+esc(src)+'" alt="">':'')+'</td><td>'+esc(p.title)+'<br><span class="tag">'+esc(p.deal)+'</span> '+(p.hidden?'<span class="tag h">מוסתר</span>':'')+'</td><td>'+esc(an(p.area))+'</td><td>'+(p.price?"₪"+Number(p.price).toLocaleString("he-IL"):"")+'</td><td><button class="btn sm" data-e="'+i+'">עריכה</button> <button class="btn sm gray" data-h="'+i+'">'+(p.hidden?"הצגה":"הסתרה")+'</button> <button class="btn sm navy" data-d="'+i+'">מחיקה</button></td></tr>'}).join("");
+$("aTbl").innerHTML='<tr><th>שכונה</th><th>כתובת</th><th>נכסים</th><th></th></tr>'+D.areas.map(function(a,i){
+var n=D.props.filter(function(p){return p.area===a.slug}).length;
+return '<tr><td>'+esc(a.name)+'</td><td dir="ltr">areas/'+esc(a.slug)+'.html</td><td>'+n+'</td><td><button class="btn sm" data-ae="'+i+'">עריכה</button> <button class="btn sm navy" data-ad="'+i+'">מחיקה</button></td></tr>'}).join("");
+var s=D.site;$("sPhone").value=s.phone||"";$("sWa").value=s.wa||"";$("sMail").value=s.mail||"";$("sLic").value=s.license||"";$("sDemo").checked=!!s.demo}
+
+document.addEventListener("click",function(e){
+var t=e.target,d=t.dataset;if(!d)return;
+if(d.e!==undefined)fillP(+d.e);
+if(d.h!==undefined){D.props[+d.h].hidden=!D.props[+d.h].hidden;mark();draw()}
+if(d.d!==undefined){var p=D.props[+d.d];if(confirm("למחוק את ״"+p.title+"״?")){if(p.img){delete pend[p.img];delImg.push(p.img)}D.props.splice(+d.d,1);mark();draw()}}
+if(d.ae!==undefined)fillA(+d.ae);
+if(d.ad!==undefined){var a=D.areas[+d.ad];
+if(D.props.some(function(p){return p.area===a.slug}))return alert("יש נכסים בשכונה הזו. מחק או העבר אותם קודם.");
+if(confirm("למחוק את השכונה ״"+a.name+"״ ואת העמוד שלה?")){D.areas.splice(+d.ad,1);mark();draw()}}});
+
+function fillP(i){var p=D.props[i];editP=i;$("pfT").textContent="עריכת נכס";$("pSave").textContent="עדכון";$("pCancel").classList.remove("hide");
+$("pTitle").value=p.title;$("pArea").value=p.area;$("pDeal").value=p.deal;$("pType").value=p.type||"דירה";$("pRooms").value=p.rooms;$("pSize").value=p.size||"";$("pFloor").value=p.floor||"";$("pPrice").value=p.price||"";$("pDesc").value=p.desc||"";$("pHid").checked=!!p.hidden;
+var src=pv[p.img]||p.img;$("pPv").classList.toggle("hide",!src);if(src)$("pPv").src=src;$("pImg").value="";window.scrollTo(0,0)}
+function resetP(){editP=null;$("pfT").textContent="הוספת נכס";$("pSave").textContent="הוספה";$("pCancel").classList.add("hide");
+["pTitle","pRooms","pSize","pFloor","pPrice","pDesc","pImg"].forEach(function(x){$(x).value=""});$("pHid").checked=false;$("pPv").classList.add("hide");curImg=null}
+$("pCancel").onclick=resetP;
+var curImg=null;
+$("pImg").onchange=function(){
+var f=this.files[0];if(!f)return;
+var im=new Image(),u=URL.createObjectURL(f);
+im.onload=function(){var m=1200,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+var url=c.toDataURL("image/jpeg",.8);curImg={url:url};$("pPv").src=url;$("pPv").classList.remove("hide");URL.revokeObjectURL(u)};
+im.src=u};
+$("pSave").onclick=function(){
+if(!$("pTitle").value.trim()||!$("pRooms").value)return alert("חובה למלא כותרת ומספר חדרים");
+var old=editP!==null?D.props[editP]:null;
+var p={id:old?old.id:"p"+Date.now().toString(36),title:$("pTitle").value.trim(),area:$("pArea").value,deal:$("pDeal").value,type:$("pType").value,rooms:+$("pRooms").value,size:+$("pSize").value||0,floor:$("pFloor").value.trim(),price:+$("pPrice").value||0,desc:$("pDesc").value.trim(),img:old?old.img:"",hidden:$("pHid").checked};
+if(curImg){var path="img/"+p.id+".jpg";pend[path]=curImg.url.split(",")[1];pv[path]=curImg.url;p.img=path}
+if(old)D.props[editP]=p;else D.props.unshift(p);
+resetP();mark();draw()};
+
+function fillA(i){var a=D.areas[i];editA=i;$("aFT").textContent="עריכת שכונה";$("aSave").textContent="עדכון";$("aCancel").classList.remove("hide");
+$("aName").value=a.name;$("aSlug").value=a.slug;$("aSlug").disabled=true;$("aLoc").value=a.loc;$("aText").value=a.text;window.scrollTo(0,0)}
+function resetA(){editA=null;$("aFT").textContent="הוספת שכונה";$("aSave").textContent="הוספה";$("aCancel").classList.add("hide");["aName","aSlug","aText"].forEach(function(x){$(x).value=""});$("aSlug").disabled=false}
+$("aCancel").onclick=resetA;
+$("aSave").onclick=function(){
+var n=$("aName").value.trim(),s=$("aSlug").value.trim();
+if(!n||!s||!$("aText").value.trim())return alert("חובה למלא שם, כתובת באנגלית וטקסט");
+if(!slugOk(s))return alert("הכתובת חייבת להיות באותיות קטנות באנגלית, מספרים ומקפים בלבד");
+if(editA===null&&D.areas.some(function(a){return a.slug===s}))return alert("כתובת זו כבר קיימת");
+var a={slug:s,name:n,loc:$("aLoc").value,text:$("aText").value.trim()};
+if(editA!==null)D.areas[editA]=a;else D.areas.push(a);
+resetA();mark();draw()};
+["sPhone","sWa","sMail","sLic","sDemo"].forEach(function(id){$(id).onchange=function(){
+D.site={phone:$("sPhone").value.trim(),wa:$("sWa").value.replace(/\D/g,""),mail:$("sMail").value.trim(),license:$("sLic").value.trim(),demo:$("sDemo").checked};mark()}});
+
+function page(a){
+var v={NAME:a.name,SLUG:a.slug,LOC:a.loc,TEXT:a.text,SHORT:a.text.split(".")[0]+".",SITE:SITEURL()};
+return tpl.replace(/\{\{(\w+)\}\}/g,function(m,k){return esc(v[k])})}
+function SITEURL(){return "https://"+cfg.o+".github.io/"+cfg.r+"/"}
+function sitemap(){var d=new Date().toISOString().slice(0,10),u=[SITEURL()].concat(D.areas.map(function(a){return SITEURL()+"areas/"+a.slug+".html"}));
+return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+u.map(function(x){return '<url><loc>'+x+'</loc><lastmod>'+d+'</lastmod></url>\n'}).join("")+'</urlset>\n'}
+
+$("bPub").onclick=async function(){
+if(!dirty&&!confirm("אין שינויים חדשים. לפרסם בכל זאת?"))return;
+this.disabled=true;
+try{
+msg("מעלה תמונות...");
+for(var p in pend)await putFile(p,pend[p],true,"תמונת נכס");
+for(var i=0;i<delImg.length;i++)await delFile(delImg[i]);
+msg("יוצר עמודי שכונות...");
+for(var j=0;j<D.areas.length;j++)await putFile("areas/"+D.areas[j].slug+".html",page(D.areas[j]),false,"עמוד שכונה");
+var dir=await api("areas");
+if(dir.ok){var L=await dir.json();for(var k=0;k<L.length;k++){var sl=L[k].name.replace(/\.html$/,"");if(!D.areas.some(function(a){return a.slug===sl}))await delFile("areas/"+L[k].name)}}
+msg("שומר נתונים...");
+await putFile("sitemap.xml",sitemap(),false,"מפת אתר");
+await putFile("data.json",JSON.stringify(D,null,1),false,"עדכון נתוני האתר");
+pend={};delImg=[];dirty=false;
+msg("פורסם בהצלחה. השינויים יופיעו באתר בתוך כדקה.","ok")
+}catch(e){msg(e.message,"er")}
+this.disabled=false};
+</script>
+</body>
+</html>
